@@ -1,0 +1,36 @@
+.resume-actions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: var(--space-7);
+}
+
+.resume-note {
+  text-align: center;
+  color: var(--color-text-subtle);
+  font-size: var(--fs-sm);
+  margin-top: var(--space-5);
+  overflow-wrap: break-word;
+}
+
+.resume-note code {
+  font-family: var(--font-mono);
+  background: var(--color-bg-alt);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85em;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  word-break: break-word;
+}
+
+@media (max-width: 480px) {
+  .resume-actions {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
