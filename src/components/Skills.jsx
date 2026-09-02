@@ -10,19 +10,36 @@ const skills = [
   { name: 'Responsive Design', description: 'Mobile-first, fluid layouts.' },
 ]
 
+function initials(name) {
+  return name
+    .split(' ')
+    .map((w) => w[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase()
+}
+
 function Skills() {
   return (
     <section id="skills" className="section">
       <div className="container">
-        <h2 className="section-title">Skills</h2>
-        <p className="section-subtitle">
-          Technologies and tools I work with regularly.
-        </p>
-        <ul className="skills-grid">
+        <div className="section-header">
+          <span className="section-eyebrow">Skills</span>
+          <h2 className="section-title">What I work with</h2>
+          <p className="section-subtitle">
+            A focused set of technologies I use to ship interfaces that are
+            fast, accessible, and easy to maintain.
+          </p>
+        </div>
+
+        <ul className="skills-grid" role="list">
           {skills.map((skill) => (
             <li key={skill.name} className="skill-card">
-              <h3 className="skill-name">{skill.name}</h3>
-              <p className="skill-description">{skill.description}</p>
+              <span className="skill-icon" aria-hidden="true">{initials(skill.name)}</span>
+              <div className="skill-content">
+                <h3 className="skill-name">{skill.name}</h3>
+                <p className="skill-description">{skill.description}</p>
+              </div>
             </li>
           ))}
         </ul>

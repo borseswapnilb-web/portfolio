@@ -1,23 +1,35 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './Navbar.css'
 
 function Navbar() {
   const [open, setOpen] = useState(false)
 
-  const handleLinkClick = () => setOpen(false)
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e) => { if (e.key === 'Escape') setOpen(false) }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [open])
+
+  const closeMenu = () => setOpen(false)
 
   return (
-    <header className="navbar">
-      <div className="navbar-inner">
-        <a href="#home" className="navbar-brand" onClick={handleLinkClick}>
-          Your Name
+    <header className="navbar" role="banner">
+      <div className="navbar-inner container">
+        <a href="#home" className="navbar-brand" onClick={closeMenu} aria-label="Go to top">
+          <span className="navbar-brand-mark" aria-hidden="true">SB</span>
+          <span className="navbar-brand-text">
+            <span className="navbar-brand-name">Swapnil Borse</span>
+            <span className="navbar-brand-role">Frontend Developer</span>
+          </span>
         </a>
 
         <button
           type="button"
           className={`navbar-toggle ${open ? 'is-open' : ''}`}
-          aria-label="Toggle navigation menu"
+          aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={open}
+          aria-controls="primary-navigation"
           onClick={() => setOpen((v) => !v)}
         >
           <span></span>
@@ -25,13 +37,17 @@ function Navbar() {
           <span></span>
         </button>
 
-        <nav className={`navbar-links ${open ? 'is-open' : ''}`} aria-label="Primary">
+        <nav
+          id="primary-navigation"
+          className={`navbar-links ${open ? 'is-open' : ''}`}
+          aria-label="Primary"
+        >
           <ul>
-            <li><a href="#about" onClick={handleLinkClick}>About</a></li>
-            <li><a href="#projects" onClick={handleLinkClick}>Projects</a></li>
-            <li><a href="#skills" onClick={handleLinkClick}>Skills</a></li>
-            <li><a href="#resume" onClick={handleLinkClick}>Resume</a></li>
-            <li><a href="#contact" onClick={handleLinkClick}>Contact</a></li>
+            <li><a href="#about" onClick={closeMenu}>About</a></li>
+            <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
+            <li><a href="#projects" onClick={closeMenu}>Projects</a></li>
+            <li><a href="#resume" onClick={closeMenu}>Resume</a></li>
+            <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
           </ul>
         </nav>
       </div>

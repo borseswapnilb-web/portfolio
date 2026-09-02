@@ -9,8 +9,9 @@ const projects = [
     description:
       'A responsive task management application with local persistence, filtering, and a clean, accessible interface.',
     tech: ['React', 'JavaScript', 'CSS'],
-    github: 'https://github.com/yourusername/task-tracker',
-    demo: 'https://yourusername.github.io/task-tracker',
+    // TODO: replace placeholder URLs with your real project links
+    github: '',
+    demo: '',
     image: taskTracker,
     imageAlt: 'Task Tracker app interface showing a list of tasks',
   },
@@ -20,8 +21,9 @@ const projects = [
     description:
       'A weather dashboard that fetches real-time data from a public API and presents forecasts in a clean, mobile-friendly layout.',
     tech: ['JavaScript', 'HTML', 'CSS', 'API'],
-    github: 'https://github.com/yourusername/weather-dashboard',
-    demo: 'https://yourusername.github.io/weather-dashboard',
+    // TODO: replace placeholder URLs with your real project links
+    github: '',
+    demo: '',
     image: weatherDashboard,
     imageAlt: 'Weather dashboard displaying a weekly forecast',
   },
@@ -31,8 +33,9 @@ const projects = [
     description:
       'A personal portfolio built with React and Vite, focused on accessibility, responsive design, and clean typography.',
     tech: ['React', 'Vite', 'CSS'],
-    github: 'https://github.com/yourusername/portfolio',
-    demo: '#home',
+    // TODO: replace placeholder URLs with your real project links
+    github: '',
+    demo: '',
     image: portfolioSite,
     imageAlt: 'Preview of the personal portfolio website',
   },
