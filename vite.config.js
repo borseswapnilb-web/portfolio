@@ -1,11 +1,15 @@
 import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 
 // https://vite.dev/config/
-// Set VITE_BASE_PATH in the environment to deploy under a subpath
-// (e.g. "/portfolio/" for GitHub Pages project sites). Leave unset for
-// Vercel/Netlify root hosting.
-export default defineConfig(({ env }) => ({
-  base: env.VITE_BASE_PATH || '/',
-  plugins: [react()],
-}))
+// Set VITE_BASE_PATH in a .env file or your hosting environment to deploy
+// under a subpath (e.g. "/portfolio/" for GitHub Pages project sites).
+// Leave unset for Vercel/Netlify root hosting.
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '')
+  const base = env.VITE_BASE_PATH || '/'
+  return {
+    base,
+    plugins: [react()],
+  }
+})
